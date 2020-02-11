@@ -40,7 +40,7 @@ typedef struct
 } Vertex;
 
 const int TRIANGLE_NUMBER = 36;
-const int VERTEX_NUMBER = 12;
+const int VERTEX_NUMBER = 16;
 
 Vertex vertex[VERTEX_NUMBER];
 GLubyte triangles[TRIANGLE_NUMBER];
@@ -131,6 +131,21 @@ void Game::initialize()
 	vertex[11].coordinate[1] = -0.25f;
 	vertex[11].coordinate[2] = 0.5f;
 
+	vertex[12].coordinate[0] = 0.25f;
+	vertex[12].coordinate[1] = 0.25f;
+	vertex[12].coordinate[2] = 0.0f;
+
+	vertex[13].coordinate[0] = 0.25f;
+	vertex[13].coordinate[1] = -0.25f;
+	vertex[13].coordinate[2] = 0.0f;
+
+	vertex[14].coordinate[0] = 0.25f;
+	vertex[14].coordinate[1] = 0.25f;
+	vertex[14].coordinate[2] = 0.5f;
+
+	vertex[15].coordinate[0] = 0.25f;
+	vertex[15].coordinate[1] = -0.25f;
+	vertex[15].coordinate[2] = 0.5f;
 
 
 
@@ -171,31 +186,39 @@ void Game::initialize()
 	vertex[11].texel[1] = 0.25f;
 
 
+	vertex[12].texel[0] = 0.25f;
+	vertex[12].texel[1] = 0.25f;
+
+	vertex[13].texel[0] = 0.5f;
+	vertex[13].texel[1] = 0.25f;
+
+	vertex[14].texel[0] = 0.25f;
+	vertex[14].texel[1] = 0.0f;
+
+	vertex[15].texel[0] = 0.5f;
+	vertex[15].texel[1] = 0.0f;
+
+
 
 
 
 	
-
-
-
-
-
-
 
 
 
 
 	/*Index of Poly / Triangle to Draw */
+	//FACE 6
 	triangles[0] = 0;   triangles[1] = 1;   triangles[2] = 2;
 	triangles[3] = 0; triangles[4] = 2;  triangles[5] = 3;
 	
-	
+	//Face 1
 	triangles[6] = 4;   triangles[7] = 5;   triangles[8] = 6;
 	triangles[9] = 4; triangles[10] = 6;  triangles[11] = 7;
 	
-	
-	triangles[12] = 2;   triangles[13] = 3;   triangles[14] = 6;
-	triangles[15] = 3; triangles[16] = 6;  triangles[17] = 7;
+	// Face 3 
+	triangles[12] = 12;   triangles[13] = 13;   triangles[14] = 14;
+	triangles[15] = 13; triangles[16] = 14;  triangles[17] = 15;
 	
 	
 	triangles[18] = 1;   triangles[19] = 2;   triangles[20] = 5;
