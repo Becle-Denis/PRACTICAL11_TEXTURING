@@ -40,7 +40,7 @@ typedef struct
 } Vertex;
 
 const int TRIANGLE_NUMBER = 36;
-const int VERTEX_NUMBER = 16;
+const int VERTEX_NUMBER = 20;
 
 Vertex vertex[VERTEX_NUMBER];
 GLubyte triangles[TRIANGLE_NUMBER];
@@ -147,7 +147,21 @@ void Game::initialize()
 	vertex[15].coordinate[1] = -0.25f;
 	vertex[15].coordinate[2] = 0.5f;
 
+	vertex[16].coordinate[0] = -0.25f;
+	vertex[16].coordinate[1] = 0.25f;
+	vertex[16].coordinate[2] = 0.0f;
 
+	vertex[17].coordinate[0] = 0.25f;
+	vertex[17].coordinate[1] = 0.25f;
+	vertex[17].coordinate[2] = 0.0f;
+
+	vertex[18].coordinate[0] = -0.25f;
+	vertex[18].coordinate[1] = 0.25f;
+	vertex[18].coordinate[2] = 0.5f;
+
+	vertex[19].coordinate[0] = 0.25f;
+	vertex[19].coordinate[1] = 0.25f;
+	vertex[19].coordinate[2] = 0.5f;
 
 	vertex[0].texel[0] = 0.75f;
 	vertex[0].texel[1] = 0.5f;
@@ -185,7 +199,6 @@ void Game::initialize()
 	vertex[11].texel[0] = 0.75f;
 	vertex[11].texel[1] = 0.25f;
 
-
 	vertex[12].texel[0] = 0.25f;
 	vertex[12].texel[1] = 0.25f;
 
@@ -197,6 +210,20 @@ void Game::initialize()
 
 	vertex[15].texel[0] = 0.5f;
 	vertex[15].texel[1] = 0.0f;
+
+
+	vertex[16].texel[0] = 0.0f;
+	vertex[16].texel[1] = 0.5f;
+
+	vertex[17].texel[0] = 0.25f;
+	vertex[17].texel[1] = 0.5f;
+
+	vertex[18].texel[0] = 0.0f;
+	vertex[18].texel[1] = 0.25f;
+
+	vertex[19].texel[0] = 0.25f;
+	vertex[19].texel[1] = 0.25f;
+
 
 
 
@@ -221,8 +248,8 @@ void Game::initialize()
 	triangles[15] = 13; triangles[16] = 14;  triangles[17] = 15;
 	
 	// Face 2 !
-	triangles[18] = 1;   triangles[19] = 2;   triangles[20] = 5;
-	triangles[21] = 2; triangles[22] = 5;  triangles[23] = 6;
+	triangles[18] = 16;   triangles[19] = 17;   triangles[20] = 18;
+	triangles[21] = 17; triangles[22] = 18;  triangles[23] = 19;
 	
 	// Face 4 ! 
 	triangles[24] = 0;   triangles[25] = 1;   triangles[26] = 4;
