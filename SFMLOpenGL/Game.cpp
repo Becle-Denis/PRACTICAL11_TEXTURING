@@ -40,7 +40,7 @@ typedef struct
 } Vertex;
 
 const int TRIANGLE_NUMBER = 36;
-const int VERTEX_NUMBER = 20;
+const int VERTEX_NUMBER = 24;
 
 Vertex vertex[VERTEX_NUMBER];
 GLubyte triangles[TRIANGLE_NUMBER];
@@ -163,6 +163,22 @@ void Game::initialize()
 	vertex[19].coordinate[1] = 0.25f;
 	vertex[19].coordinate[2] = 0.5f;
 
+	vertex[20].coordinate[0] = -0.25f;
+	vertex[20].coordinate[1] = -0.25f;
+	vertex[20].coordinate[2] = 0.0f;
+
+	vertex[21].coordinate[0] = -0.25f;
+	vertex[21].coordinate[1] = 0.25f;
+	vertex[21].coordinate[2] = 0.0f;
+
+	vertex[22].coordinate[0] = -0.25f;
+	vertex[22].coordinate[1] = -0.25f;
+	vertex[22].coordinate[2] = 0.5f;
+
+	vertex[23].coordinate[0] = -0.25f;
+	vertex[23].coordinate[1] = 0.25f;
+	vertex[23].coordinate[2] = 0.5f;
+
 	vertex[0].texel[0] = 0.75f;
 	vertex[0].texel[1] = 0.5f;
 
@@ -211,7 +227,6 @@ void Game::initialize()
 	vertex[15].texel[0] = 0.5f;
 	vertex[15].texel[1] = 0.0f;
 
-
 	vertex[16].texel[0] = 0.0f;
 	vertex[16].texel[1] = 0.5f;
 
@@ -223,6 +238,19 @@ void Game::initialize()
 
 	vertex[19].texel[0] = 0.25f;
 	vertex[19].texel[1] = 0.25f;
+
+
+	vertex[20].texel[0] = 0.25f;
+	vertex[20].texel[1] = 0.75f;
+
+	vertex[21].texel[0] = 0.5f;
+	vertex[21].texel[1] = 0.75f;
+
+	vertex[22].texel[0] = 0.25f;
+	vertex[22].texel[1] = 0.5f;
+
+	vertex[23].texel[0] = 0.5f;
+	vertex[23].texel[1] = 0.5f;
 
 
 
@@ -247,13 +275,13 @@ void Game::initialize()
 	triangles[12] = 12;   triangles[13] = 13;   triangles[14] = 14;
 	triangles[15] = 13; triangles[16] = 14;  triangles[17] = 15;
 	
-	// Face 2 !
+	// Face 2
 	triangles[18] = 16;   triangles[19] = 17;   triangles[20] = 18;
 	triangles[21] = 17; triangles[22] = 18;  triangles[23] = 19;
 	
 	// Face 4 ! 
-	triangles[24] = 0;   triangles[25] = 1;   triangles[26] = 4;
-	triangles[27] = 1; triangles[28] = 4;  triangles[29] = 5;
+	triangles[24] = 20;   triangles[25] = 21;   triangles[26] = 22;
+	triangles[27] = 21; triangles[28] = 22;  triangles[29] = 23;
 	
 	//FACE 5 
 	triangles[30] = 8;   triangles[31] = 9;   triangles[32] = 11;
