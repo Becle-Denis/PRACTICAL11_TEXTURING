@@ -167,17 +167,25 @@ void Game::initialize()
 	vertex[3].texel[0] = 0.25f;
 	vertex[3].texel[1] = 0.5f;
 
-	vertex[4].texel[0] = 0.25f;
-	vertex[4].texel[1] = 0.25f;
 
-	vertex[5].texel[0] = 0.5f;
+	vertex[4].texel[0] = 0.75f;
+	vertex[4].texel[1] = 0.5f;
+
+	vertex[5].texel[0] = 0.75f;
 	vertex[5].texel[1] = 0.25f;
 
-	vertex[6].texel[0] = 0.5f;
-	vertex[6].texel[1] = 0.5f;
+	vertex[6].texel[0] = 1.0f;
+	vertex[6].texel[1] = 0.25f;
 
-	vertex[7].texel[0] = 0.25f;
+
+	vertex[7].texel[0] = 1.0f;
 	vertex[7].texel[1] = 0.5f;
+
+
+
+
+
+
 
 
 
