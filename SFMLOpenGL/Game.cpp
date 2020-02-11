@@ -39,7 +39,7 @@ typedef struct
 	float texel[2];
 } Vertex;
 
-const int TRIANGLE_NUMBER = 12;
+const int TRIANGLE_NUMBER = 36;
 const int VERTEX_NUMBER = 8;
 
 Vertex vertex[VERTEX_NUMBER];
@@ -188,6 +188,18 @@ void Game::initialize()
 
 	triangles[6] = 4;   triangles[7] = 5;   triangles[8] = 6;
 	triangles[9] = 4; triangles[10] = 6;  triangles[11] = 7;
+
+	triangles[12] = 2;   triangles[13] = 3;   triangles[14] = 6;
+	triangles[15] = 3; triangles[16] = 6;  triangles[17] = 7;
+
+	triangles[18] = 1;   triangles[19] = 2;   triangles[20] = 5;
+	triangles[21] = 2; triangles[22] = 5;  triangles[23] = 6;
+
+	triangles[24] = 0;   triangles[25] = 1;   triangles[26] = 4;
+	triangles[27] = 1; triangles[28] = 4;  triangles[29] = 5;
+
+	triangles[30] = 0;   triangles[31] = 3;   triangles[32] = 7;
+	triangles[33] = 0; triangles[34] = 4;  triangles[35] = 7;
 
 	/* Create a new VBO using VBO id */
 	glGenBuffers(1, vbo);
