@@ -40,7 +40,7 @@ typedef struct
 } Vertex;
 
 const int TRIANGLE_NUMBER = 36;
-const int VERTEX_NUMBER = 8;
+const int VERTEX_NUMBER = 12;
 
 Vertex vertex[VERTEX_NUMBER];
 GLubyte triangles[TRIANGLE_NUMBER];
@@ -115,45 +115,23 @@ void Game::initialize()
 	vertex[7].coordinate[1] = -0.25f;
 	vertex[7].coordinate[2] = 0.5f;
 
-	vertex[0].color[0] = 1.0f;
-	vertex[0].color[1] = 0.0f;
-	vertex[0].color[2] = 0.0f;
-	vertex[0].color[3] = 1.0f;
+	vertex[8].coordinate[0] = -0.25f;
+	vertex[8].coordinate[1] = -0.25f;
+	vertex[8].coordinate[2] = 0.0f;
 
-	vertex[1].color[0] = 1.0f;
-	vertex[1].color[1] = 0.0f;
-	vertex[1].color[2] = 0.0f;
-	vertex[1].color[3] = 1.0f;
+	vertex[9].coordinate[0] = 0.25f;
+	vertex[9].coordinate[1] = -0.25f;
+	vertex[9].coordinate[2] = 0.0f;
 
-	vertex[2].color[0] = 1.0f;
-	vertex[2].color[1] = 0.0f;
-	vertex[2].color[2] = 0.0f;
-	vertex[2].color[3] = 0.0f;
+	vertex[10].coordinate[0] = -0.25f;
+	vertex[10].coordinate[1] = -0.25f;
+	vertex[10].coordinate[2] = 0.5f;
 
-	vertex[3].color[0] = 1.0f;
-	vertex[3].color[1] = 0.0f;
-	vertex[3].color[2] = 0.0f;
-	vertex[3].color[3] = 0.0f;
+	vertex[11].coordinate[0] = 0.25f;
+	vertex[11].coordinate[1] = -0.25f;
+	vertex[11].coordinate[2] = 0.5f;
 
-	vertex[4].color[0] = 1.0f;
-	vertex[4].color[1] = 0.0f;
-	vertex[4].color[2] = 0.0f;
-	vertex[4].color[3] = 1.0f;
 
-	vertex[5].color[0] = 1.0f;
-	vertex[5].color[1] = 0.0f;
-	vertex[5].color[2] = 0.0f;
-	vertex[5].color[3] = 1.0f;
-
-	vertex[6].color[0] = 1.0f;
-	vertex[6].color[1] = 0.0f;
-	vertex[6].color[2] = 0.0f;
-	vertex[6].color[3] = 0.0f;
-
-	vertex[7].color[0] = 1.0f;
-	vertex[7].color[1] = 0.0f;
-	vertex[7].color[2] = 0.0f;
-	vertex[7].color[3] = 0.0f;
 
 
 	vertex[0].texel[0] = 0.75f;
@@ -180,6 +158,23 @@ void Game::initialize()
 	vertex[7].texel[0] = 0.25f;
 	vertex[7].texel[1] = 0.5f;
 
+	vertex[8].texel[0] = 0.5f;
+	vertex[8].texel[1] = 0.5f;
+
+	vertex[9].texel[0] = 0.75f;
+	vertex[9].texel[1] = 0.5f;
+
+	vertex[10].texel[0] = 0.5f;
+	vertex[10].texel[1] = 0.25f;
+
+	vertex[11].texel[0] = 0.75f;
+	vertex[11].texel[1] = 0.25f;
+
+
+
+
+
+	
 
 
 
@@ -194,22 +189,26 @@ void Game::initialize()
 	triangles[0] = 0;   triangles[1] = 1;   triangles[2] = 2;
 	triangles[3] = 0; triangles[4] = 2;  triangles[5] = 3;
 	
-
+	
 	triangles[6] = 4;   triangles[7] = 5;   triangles[8] = 6;
 	triangles[9] = 4; triangles[10] = 6;  triangles[11] = 7;
-
+	
+	
 	triangles[12] = 2;   triangles[13] = 3;   triangles[14] = 6;
 	triangles[15] = 3; triangles[16] = 6;  triangles[17] = 7;
-
+	
+	
 	triangles[18] = 1;   triangles[19] = 2;   triangles[20] = 5;
 	triangles[21] = 2; triangles[22] = 5;  triangles[23] = 6;
-
+	
+	
 	triangles[24] = 0;   triangles[25] = 1;   triangles[26] = 4;
 	triangles[27] = 1; triangles[28] = 4;  triangles[29] = 5;
-
-	triangles[30] = 0;   triangles[31] = 3;   triangles[32] = 7;
-	triangles[33] = 0; triangles[34] = 4;  triangles[35] = 7;
 	
+	//FACE 5 
+	triangles[30] = 8;   triangles[31] = 9;   triangles[32] = 11;
+	triangles[33] = 8; triangles[34] = 10;  triangles[35] = 11;
+
 
 	/* Create a new VBO using VBO id */
 	glGenBuffers(1, vbo);
