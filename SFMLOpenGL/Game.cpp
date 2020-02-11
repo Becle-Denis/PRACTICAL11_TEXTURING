@@ -61,7 +61,7 @@ GLuint	index,		//Index to draw
 //const string filename = "texture.tga";
 //const string filename = "cube.tga";
 
-const string filename = "texture.tga";
+const string filename = "cube.tga";
 
 int width; //width of texture
 int height; //height of texture
@@ -155,29 +155,29 @@ void Game::initialize()
 	vertex[7].color[2] = 0.0f;
 	vertex[7].color[3] = 0.0f;
 
-	vertex[0].texel[0] = 0.0f;
-	vertex[0].texel[1] = 1.0f;
+	vertex[0].texel[0] = 0.25f;
+	vertex[0].texel[1] = 0.25;
 
-	vertex[1].texel[0] = 1.0f;
-	vertex[1].texel[1] = 1.0f;
+	vertex[1].texel[0] = 0.5f;
+	vertex[1].texel[1] = 0.25f;
 
-	vertex[2].texel[0] = 1.0f;
-	vertex[2].texel[1] = 0.0f;
+	vertex[2].texel[0] = 0.5f;
+	vertex[2].texel[1] = 0.5f;
 
-	vertex[3].texel[0] = 0.0f;
-	vertex[3].texel[1] = 0.0f;
+	vertex[3].texel[0] = 0.25f;
+	vertex[3].texel[1] = 0.5f;
 
-	vertex[4].texel[0] = 0.0f;
-	vertex[4].texel[1] = 1.0f;
+	vertex[4].texel[0] = 0.25f;
+	vertex[4].texel[1] = 0.25f;
 
-	vertex[5].texel[0] = 1.0f;
-	vertex[5].texel[1] = 1.0f;
+	vertex[5].texel[0] = 0.5f;
+	vertex[5].texel[1] = 0.25f;
 
-	vertex[6].texel[0] = 1.0f;
-	vertex[6].texel[1] = 0.0f;
+	vertex[6].texel[0] = 0.5f;
+	vertex[6].texel[1] = 0.5f;
 
-	vertex[7].texel[0] = 0.0f;
-	vertex[7].texel[1] = 0.0f;
+	vertex[7].texel[0] = 0.25f;
+	vertex[7].texel[1] = 0.5f;
 
 
 
