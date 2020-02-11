@@ -83,36 +83,36 @@ void Game::initialize()
 	DEBUG_MSG(glGetString(GL_VERSION));
 
 	/* Vertices counter-clockwise winding */
-	vertex[0].coordinate[0] = -0.5f;
-	vertex[0].coordinate[1] = -0.5f;
+	vertex[0].coordinate[0] = -0.25f;
+	vertex[0].coordinate[1] = -0.25f;
 	vertex[0].coordinate[2] = 0.0f;
 
-	vertex[1].coordinate[0] = -0.5f;
-	vertex[1].coordinate[1] = 0.5f;
+	vertex[1].coordinate[0] = -0.25f;
+	vertex[1].coordinate[1] = 0.25f;
 	vertex[1].coordinate[2] = 0.0f;
 
-	vertex[2].coordinate[0] = 0.5f;
-	vertex[2].coordinate[1] = 0.5f;
+	vertex[2].coordinate[0] = 0.25f;
+	vertex[2].coordinate[1] = 0.25f;
 	vertex[2].coordinate[2] = 0.0f;
 
-	vertex[3].coordinate[0] = 0.5f;
-	vertex[3].coordinate[1] = -0.5f;
+	vertex[3].coordinate[0] = 0.25f;
+	vertex[3].coordinate[1] = -0.25f;
 	vertex[3].coordinate[2] = 0.0f;
 
-	vertex[4].coordinate[0] = -0.5f;
-	vertex[4].coordinate[1] = -0.5f;
+	vertex[4].coordinate[0] = -0.25f;
+	vertex[4].coordinate[1] = -0.25f;
 	vertex[4].coordinate[2] = 0.5f;
 
-	vertex[5].coordinate[0] = -0.5f;
-	vertex[5].coordinate[1] = 0.5f;
+	vertex[5].coordinate[0] = -0.25f;
+	vertex[5].coordinate[1] = 0.25f;
 	vertex[5].coordinate[2] = 0.5f;
 
-	vertex[6].coordinate[0] = 0.5f;
-	vertex[6].coordinate[1] = 0.5f;
+	vertex[6].coordinate[0] = 0.25f;
+	vertex[6].coordinate[1] = 0.25f;
 	vertex[6].coordinate[2] = 0.5f;
 
-	vertex[7].coordinate[0] = 0.5f;
-	vertex[7].coordinate[1] = -0.5f;
+	vertex[7].coordinate[0] = 0.25f;
+	vertex[7].coordinate[1] = -0.25f;
 	vertex[7].coordinate[2] = 0.5f;
 
 	vertex[0].color[0] = 1.0f;
