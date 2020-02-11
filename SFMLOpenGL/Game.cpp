@@ -1,7 +1,5 @@
 #include <Game.h>
 
-static bool flip;
-
 Game::Game() : window(VideoMode(800, 600), "OpenGL Cube Texturing")
 {
 }
@@ -259,41 +257,6 @@ void Game::initialize()
 void Game::update()
 {
 	elapsed = clock.getElapsedTime();
-
-	if (elapsed.asSeconds() >= 1.0f)
-	{
-		clock.restart();
-
-		if (!flip)
-		{
-			flip = true;
-		}
-		else
-			flip = false;
-	}
-
-	if (flip)
-	{
-		rotationAngle += 0.005f;
-
-		if (rotationAngle > 360.0f)
-		{
-			rotationAngle -= 360.0f;
-		}
-	}
-
-	//Change vertex data
-	vertex[0].coordinate[0] += -0.0001f;
-	vertex[0].coordinate[1] += -0.0001f;
-	vertex[0].coordinate[2] += -0.0001f;
-
-	vertex[1].coordinate[0] += -0.0001f;
-	vertex[1].coordinate[1] += -0.0001f;
-	vertex[1].coordinate[2] += -0.0001f;
-
-	vertex[2].coordinate[0] += -0.0001f;
-	vertex[2].coordinate[1] += -0.0001f;
-	vertex[2].coordinate[2] += -0.0001f;
 
 #if (DEBUG >= 2)
 	DEBUG_MSG("Update up...");
