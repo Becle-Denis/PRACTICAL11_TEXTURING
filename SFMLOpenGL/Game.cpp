@@ -155,31 +155,32 @@ void Game::initialize()
 	vertex[7].color[2] = 0.0f;
 	vertex[7].color[3] = 0.0f;
 
-	vertex[0].texel[0] = 0.25f;
-	vertex[0].texel[1] = 0.25;
 
-	vertex[1].texel[0] = 0.5f;
+	vertex[0].texel[0] = 0.75f;
+	vertex[0].texel[1] = 0.5f;
+
+	vertex[1].texel[0] = 0.75f;
 	vertex[1].texel[1] = 0.25f;
 
-	vertex[2].texel[0] = 0.5f;
-	vertex[2].texel[1] = 0.5f;
+	vertex[2].texel[0] = 1.0f;
+	vertex[2].texel[1] = 0.25f;
 
-	vertex[3].texel[0] = 0.25f;
+	vertex[3].texel[0] = 1.0f;
 	vertex[3].texel[1] = 0.5f;
 
+	vertex[4].texel[0] = 0.25f;
+	vertex[4].texel[1] = 0.25;
 
-	vertex[4].texel[0] = 0.75f;
-	vertex[4].texel[1] = 0.5f;
-
-	vertex[5].texel[0] = 0.75f;
+	vertex[5].texel[0] = 0.5f;
 	vertex[5].texel[1] = 0.25f;
+	
+	vertex[6].texel[0] = 0.5f;
+	vertex[6].texel[1] = 0.5f;
 
-	vertex[6].texel[0] = 1.0f;
-	vertex[6].texel[1] = 0.25f;
-
-
-	vertex[7].texel[0] = 1.0f;
+	vertex[7].texel[0] = 0.25f;
 	vertex[7].texel[1] = 0.5f;
+
+
 
 
 
@@ -208,6 +209,7 @@ void Game::initialize()
 
 	triangles[30] = 0;   triangles[31] = 3;   triangles[32] = 7;
 	triangles[33] = 0; triangles[34] = 4;  triangles[35] = 7;
+	
 
 	/* Create a new VBO using VBO id */
 	glGenBuffers(1, vbo);
