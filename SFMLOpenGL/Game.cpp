@@ -39,8 +39,11 @@ typedef struct
 	float texel[2];
 } Vertex;
 
-Vertex vertex[4];
-GLubyte triangles[6];
+const int TRIANGLE_NUMBER = 12;
+const int VERTEX_NUMBER = 8;
+
+Vertex vertex[VERTEX_NUMBER];
+GLubyte triangles[TRIANGLE_NUMBER];
 
 /* Variable to hold the VBO identifier and shader data */
 GLuint	index,		//Index to draw
@@ -96,6 +99,22 @@ void Game::initialize()
 	vertex[3].coordinate[1] = -0.5f;
 	vertex[3].coordinate[2] = 0.0f;
 
+	vertex[4].coordinate[0] = -0.5f;
+	vertex[4].coordinate[1] = -0.5f;
+	vertex[4].coordinate[2] = 0.5f;
+
+	vertex[5].coordinate[0] = -0.5f;
+	vertex[5].coordinate[1] = 0.5f;
+	vertex[5].coordinate[2] = 0.5f;
+
+	vertex[6].coordinate[0] = 0.5f;
+	vertex[6].coordinate[1] = 0.5f;
+	vertex[6].coordinate[2] = 0.5f;
+
+	vertex[7].coordinate[0] = 0.5f;
+	vertex[7].coordinate[1] = -0.5f;
+	vertex[7].coordinate[2] = 0.5f;
+
 	vertex[0].color[0] = 1.0f;
 	vertex[0].color[1] = 0.0f;
 	vertex[0].color[2] = 0.0f;
@@ -116,6 +135,26 @@ void Game::initialize()
 	vertex[3].color[2] = 0.0f;
 	vertex[3].color[3] = 0.0f;
 
+	vertex[4].color[0] = 1.0f;
+	vertex[4].color[1] = 0.0f;
+	vertex[4].color[2] = 0.0f;
+	vertex[4].color[3] = 1.0f;
+
+	vertex[5].color[0] = 1.0f;
+	vertex[5].color[1] = 0.0f;
+	vertex[5].color[2] = 0.0f;
+	vertex[5].color[3] = 1.0f;
+
+	vertex[6].color[0] = 1.0f;
+	vertex[6].color[1] = 0.0f;
+	vertex[6].color[2] = 0.0f;
+	vertex[6].color[3] = 0.0f;
+
+	vertex[7].color[0] = 1.0f;
+	vertex[7].color[1] = 0.0f;
+	vertex[7].color[2] = 0.0f;
+	vertex[7].color[3] = 0.0f;
+
 	vertex[0].texel[0] = 0.0f;
 	vertex[0].texel[1] = 1.0f;
 
@@ -128,9 +167,27 @@ void Game::initialize()
 	vertex[3].texel[0] = 0.0f;
 	vertex[3].texel[1] = 0.0f;
 
+	vertex[4].texel[0] = 0.0f;
+	vertex[4].texel[1] = 1.0f;
+
+	vertex[5].texel[0] = 1.0f;
+	vertex[5].texel[1] = 1.0f;
+
+	vertex[6].texel[0] = 1.0f;
+	vertex[6].texel[1] = 0.0f;
+
+	vertex[7].texel[0] = 0.0f;
+	vertex[7].texel[1] = 0.0f;
+
+
+
 	/*Index of Poly / Triangle to Draw */
 	triangles[0] = 0;   triangles[1] = 1;   triangles[2] = 2;
 	triangles[3] = 0; triangles[4] = 2;  triangles[5] = 3;
+	
+
+	triangles[6] = 4;   triangles[7] = 5;   triangles[8] = 6;
+	triangles[9] = 4; triangles[10] = 6;  triangles[11] = 7;
 
 	/* Create a new VBO using VBO id */
 	glGenBuffers(1, vbo);
@@ -144,7 +201,7 @@ void Game::initialize()
 
 	glGenBuffers(1, &index);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, index);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLubyte) * 6, triangles, GL_STATIC_DRAW); // 3 -> 6!!!!!!!!!!!
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLubyte) * TRIANGLE_NUMBER, triangles, GL_STATIC_DRAW); // 3 -> 12!!!!!!!!!!!
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
 	/* Vertex Shader which would normally be loaded from an external file */
@@ -269,8 +326,201 @@ void Game::initialize()
 
 void Game::update()
 {
+	
 	elapsed = clock.getElapsedTime();
 
+	//Allowed movement
+	if (movementCLock.getElapsedTime() > sf::milliseconds(30))
+	{
+		movementCLock.restart();
+
+		//center calculation 
+		float sumX = 0;
+		float sumY = 0;
+		float sumZ = 0;
+		for (int i = 0; i < VERTEX_NUMBER; i++)
+		{
+			sumX += vertex[i].coordinate[0];
+			sumY += vertex[i].coordinate[1];
+			sumZ += vertex[i].coordinate[2];
+		}
+		db::Vector3 center(sumX / VERTEX_NUMBER, sumY / VERTEX_NUMBER, sumZ / VERTEX_NUMBER);
+
+		//------------ROTATING--------------------------
+
+		// rotation X 
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
+		{
+			for (int i = 0; i < VERTEX_NUMBER; i++)
+			{
+				//adapting to vector
+				db::Vector3 v(vertex[i].coordinate[0], vertex[i].coordinate[1], vertex[i].coordinate[2]);
+
+				//rotating
+				v = v - center;
+				v = v * db::Matrix3::rotationX(1);
+				v = v + center;
+
+				//reassigning value 
+				vertex[i].coordinate[0] = v.x;
+				vertex[i].coordinate[1] = v.y;
+				vertex[i].coordinate[2] = v.z;
+			}
+		}
+
+
+		// rotation Y
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Y))
+		{
+			for (int i = 0; i < VERTEX_NUMBER; i++)
+			{
+				//adapting to vector
+				db::Vector3 v(vertex[i].coordinate[0], vertex[i].coordinate[1], vertex[i].coordinate[2]);
+
+				//rotating
+				v = v - center;
+				v = v * db::Matrix3::rotationY(1);
+				v = v + center;
+
+				//reassigning value 
+				vertex[i].coordinate[0] = v.x;
+				vertex[i].coordinate[1] = v.y;
+				vertex[i].coordinate[2] = v.z;
+			}
+		}
+
+		// rotation Z 
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+		{
+			for (int i = 0; i < VERTEX_NUMBER; i++)
+			{
+				//adapting to vector
+				db::Vector3 v(vertex[i].coordinate[0], vertex[i].coordinate[1], vertex[i].coordinate[2]);
+
+				//rotating
+				v = v - center;
+				v = v * db::Matrix3::rotationZ(1);
+				v = v + center;
+
+				//reassigning value 
+				vertex[i].coordinate[0] = v.x;
+				vertex[i].coordinate[1] = v.y;
+				vertex[i].coordinate[2] = v.z;
+			}
+		}
+
+		//------------TRANSLATING------------------------
+
+		// Translating right
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		{
+			for (int i = 0; i < VERTEX_NUMBER; i++)
+			{
+				//adapting to vector
+				db::Vector3 v(vertex[i].coordinate[0], vertex[i].coordinate[1], 1);
+
+				//translating
+				v = v * db::Matrix3::translate(1, 0);
+
+				//reassigning value
+				vertex[i].coordinate[0] = v.x;
+				vertex[i].coordinate[1] = v.y;
+			}
+		}
+
+		// Translating left
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+		{
+			for (int i = 0; i < VERTEX_NUMBER; i++)
+			{
+				//adapting to vector
+				db::Vector3 v(vertex[i].coordinate[0], vertex[i].coordinate[1], 1);
+
+				//translating
+				v = v * db::Matrix3::translate(-1, 0);
+
+				//reassigning value
+				vertex[i].coordinate[0] = v.x;
+				vertex[i].coordinate[1] = v.y;
+			}
+		}
+
+		// Translating up
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+		{
+			for (int i = 0; i < VERTEX_NUMBER; i++)
+			{
+				//adapting to vector
+				db::Vector3 v(vertex[i].coordinate[0], vertex[i].coordinate[1], 1);
+
+				//translating
+				v = v * db::Matrix3::translate(0, 1);
+
+				//reassigning value
+				vertex[i].coordinate[0] = v.x;
+				vertex[i].coordinate[1] = v.y;
+			}
+		}
+
+		// Translating down
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+		{
+			for (int i = 0; i < VERTEX_NUMBER; i++)
+			{
+				//adapting to vector
+				db::Vector3 v(vertex[i].coordinate[0], vertex[i].coordinate[1], 1);
+
+				//translating
+				v = v * db::Matrix3::translate(0, -1);
+
+				//reassigning value
+				vertex[i].coordinate[0] = v.x;
+				vertex[i].coordinate[1] = v.y;
+			}
+		}
+
+		// Scalling up
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::U))
+		{
+			for (int i = 0; i < VERTEX_NUMBER; i++)
+			{
+				//adapting to vector
+				db::Vector3 v(vertex[i].coordinate[0], vertex[i].coordinate[1], vertex[i].coordinate[2]);
+
+				//scalling
+				v = v - center;
+				v = v * db::Matrix3::scale3D(101);
+				v = v + center;
+
+				//reassigning value
+				vertex[i].coordinate[0] = v.x;
+				vertex[i].coordinate[1] = v.y;
+				vertex[i].coordinate[2] = v.z;
+			}
+		}
+
+		// Scalling Down
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+		{
+			for (int i = 0; i < VERTEX_NUMBER; i++)
+			{
+				//adapting to vector
+				db::Vector3 v(vertex[i].coordinate[0], vertex[i].coordinate[1], vertex[i].coordinate[2]);
+
+				//scalling
+				v = v - center;
+				v = v * db::Matrix3::scale3D(99);
+				v = v + center;
+
+				//reassigning value
+				vertex[i].coordinate[0] = v.x;
+				vertex[i].coordinate[1] = v.y;
+				vertex[i].coordinate[2] = v.z;
+			}
+		}
+
+	}
+	
 #if (DEBUG >= 2)
 	DEBUG_MSG("Update up...");
 #endif
@@ -293,7 +543,7 @@ void Game::render()
 
 	/*	As the data positions will be updated by the this program on the
 		CPU bind the updated data to the GPU for drawing	*/
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * 6, vertex, GL_STATIC_DRAW); // 3 -> 6!!!!!!!!!!!
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * TRIANGLE_NUMBER, vertex, GL_STATIC_DRAW); // 3 -> 12!!!!!!!!!!!
 
 	/*	Draw Triangle from VBO	(set where to start from as VBO can contain
 		model components that 'are' and 'are not' to be drawn )	*/
@@ -313,7 +563,7 @@ void Game::render()
 	glEnableVertexAttribArray(colorID);
 	glEnableVertexAttribArray(texelID);
 
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, (char*)NULL + 0); // 3 -> 6!!!!!!!!!!!
+	glDrawElements(GL_TRIANGLES, TRIANGLE_NUMBER, GL_UNSIGNED_BYTE, (char*)NULL + 0); // 3 -> 12!!!!!!!!!!!
 
 	window.display();
 
