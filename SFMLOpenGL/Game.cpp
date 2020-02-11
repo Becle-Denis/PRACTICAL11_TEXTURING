@@ -220,11 +220,11 @@ void Game::initialize()
 	triangles[12] = 12;   triangles[13] = 13;   triangles[14] = 14;
 	triangles[15] = 13; triangles[16] = 14;  triangles[17] = 15;
 	
-	
+	// Face 2 !
 	triangles[18] = 1;   triangles[19] = 2;   triangles[20] = 5;
 	triangles[21] = 2; triangles[22] = 5;  triangles[23] = 6;
 	
-	
+	// Face 4 ! 
 	triangles[24] = 0;   triangles[25] = 1;   triangles[26] = 4;
 	triangles[27] = 1; triangles[28] = 4;  triangles[29] = 5;
 	
