@@ -1,4 +1,28 @@
 #include <Game.h>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
+
+std::string readFromFile(std::string filePath)
+{
+	std::string r;
+	std::string line;
+	ifstream file(filePath);
+	if (file.is_open())
+	{
+		while (getline(file, line))
+		{
+			r += line;
+			r += "\n";
+		}
+	}
+	else
+	{
+		DEBUG_MSG("Unable to read the file " + filePath);
+	}
+	return r;
+}
 
 Game::Game() : window(VideoMode(800, 600), "OpenGL Cube Texturing")
 {
@@ -304,17 +328,8 @@ void Game::initialize()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
 	/* Vertex Shader which would normally be loaded from an external file */
-	const char* vs_src = "#version 400\n\r"
-		"in vec4 sv_position;"
-		"in vec4 sv_color;"
-		"in vec2 sv_texel;"
-		"out vec4 color;"
-		"out vec2 texel;"
-		"void main() {"
-		"	color = sv_color;"
-		"	texel = sv_texel;"
-		"	gl_Position = sv_position;"
-		"}"; //Vertex Shader Src
+	std::string vsS = readFromFile("VertexShader.txt");
+	const char* vs_src = vsS.c_str();
 
 	DEBUG_MSG("Setting Up Vertex Shader");
 
@@ -335,15 +350,8 @@ void Game::initialize()
 	}
 
 	/* Fragment Shader which would normally be loaded from an external file */
-	const char* fs_src = "#version 400\n\r"
-		"uniform sampler2D f_texture;"
-		"in vec4 color;"
-		"in vec2 texel;"
-		"out vec4 fColor;"
-		"void main() {"
-		//"	fColor = vec4(0.0f, 1.0f, 0.0f, 1.0f);"
-		"	fColor = texture(f_texture, texel.st);"
-		"}"; //Fragment Shader Src
+	std::string fsS = readFromFile("FragmentShader.txt");
+	const char* fs_src = fsS.c_str();
 
 	DEBUG_MSG("Setting Up Fragment Shader");
 
